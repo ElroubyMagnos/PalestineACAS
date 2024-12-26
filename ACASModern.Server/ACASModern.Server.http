@@ -1,0 +1,6 @@
+@ACASModern.Server_HostAddress = http://localhost:5091
+
+GET {{ACASModern.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

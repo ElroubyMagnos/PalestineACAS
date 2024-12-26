@@ -1,0 +1,2 @@
+C:\Users\Abdullah Elrouby\Desktop\ACASModern\acasmodern.client\obj\Release\acasmodern.client.esproj.CoreCompileInputs.cache
+C:\Users\Abdullah Elrouby\Desktop\ACAS Project\ACASModern\acasmodern.client\obj\Release\acasmodern.client.esproj.CoreCompileInputs.cache

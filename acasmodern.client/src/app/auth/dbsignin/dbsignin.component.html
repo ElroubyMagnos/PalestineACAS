@@ -1,0 +1,20 @@
+<article class="d-flex justify-between align-items-center flex-col md:flex-row">
+    <div [routerLink]="['/auth/studentsi/']" title="الطلاب" class="cursor-pointer p-1 md:p-5 d-flex flex-col justify-center align-items-center">
+        <i class="text-[150px] text-blue-400 fa-solid fa-left-long"></i>
+        <p class="fw-bolder text-blue-950">الطلاب</p>
+    </div>
+    
+    <form #f="ngForm" ngNativeValidate (ngSubmit)="LoginAsEmployee(f)" class="mx-auto my-1 md:my-5 bg-blue-400 w-[350px] h-[400px] d-flex justify-center p-4 flex-col gap-1">
+        <i class="bg-blue-300 p-3 text-[150px] text-blue-700 fa-solid fa-user-tie"></i>
+
+        <input placeholder="اسم الموظف" required ngModel class="text-end p-3 border border-gray-300 bg-gray-200" type="text" name="Username" id="">
+        <input placeholder="كلمة السر" required ngModel class="text-end p-3 border border-gray-300 bg-gray-200" type="password" name="Password" id="">
+
+        <input class="btn btn-danger" type="submit" value="تسجيل الدخول">
+    </form>
+    
+    <div [routerLink]="['/auth/teachersi/']" title="المعلمين" class="cursor-pointer p-1 md:p-5 d-flex flex-col justify-center align-items-center">
+        <i class="text-[150px] text-blue-400 fa-solid fa-right-long"></i>
+        <p class="fw-bolder text-blue-950">المعلمين</p>
+    </div>
+</article>

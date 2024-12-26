@@ -1,0 +1,1 @@
+import{d as i,g as o,l as r,o as n,pa as s}from"./chunk-A55Y5X4C.js";var a=class t{constructor(e){this.http=e}ImgViewerOpen=!1;showloadingscreen=!1;GetListOf(e){return i(this,null,function*(){return yield o(this.http.get(`/Base/GetListOf/${e}/`))})}static \u0275fac=function(p){return new(p||t)(n(s))};static \u0275prov=r({token:t,factory:t.\u0275fac,providedIn:"root"})};export{a};

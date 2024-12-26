@@ -1,0 +1,20 @@
+<div class="d-flex justify-center align-items-center gap-3">
+    <i class="fa-regular fa-hand-point-down fs-1"></i>
+    <h1>تسجيل الدخول علي هيئة </h1>
+</div>
+<article class="m-5 d-flex gap-5 justify-center">
+    <section [routerLink]="['/auth/dbsi/']" class="m-1 cursor-pointer text-center d-flex flex-col gap-1 w-[300px] h-[300px]">
+        <i class="bg-blue-300 p-3 text-[150px] text-blue-700 fa-solid fa-user-tie"></i>
+        <p class="fs-3 text-red-500">موظف</p>
+    </section>
+
+    <section [routerLink]="['/auth/studentsi/']" class="m-1 cursor-pointer text-center d-flex flex-col gap-1 w-[300px] h-[300px]">
+        <i class="bg-blue-300 p-3 text-[150px] text-blue-700 fa-solid fa-school"></i>
+        <p class="fs-3 text-red-500">طالب</p>
+    </section>
+
+    <section [routerLink]="['/auth/teachersi/']" class="m-1 cursor-pointer text-center d-flex flex-col gap-1 w-[300px] h-[300px]">
+        <i class="bg-blue-300 p-3 text-[150px] text-blue-700 fa-solid fa-person-chalkboard"></i>
+        <p class="fs-3 text-red-500">معلم</p>
+    </section>
+</article>

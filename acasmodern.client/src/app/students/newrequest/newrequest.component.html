@@ -1,0 +1,374 @@
+<article>
+    <!-- ngNativeValidate -->
+    <form #f="ngForm" (ngSubmit)="SendStudent(f, upload, uploadcertifi, uploadborn, uploadself, dadinfofill)">
+        <h1 class="pb-3 pt-2 text-center">طلب التحاق للطلبة الجدد</h1>
+        <section class="text-end p-5 d-flex flex-col gap-3">
+            <p class="text-red-600 fw-bold">حفاظا على سلامة الطلبة سيتم تأجيل استيفاء رسوم طلب الالتحاق</p>
+            <div class="mt-5">
+                <p class="text-[30px]">:اختار التخصص</p>
+                <hr/>
+
+                <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                    <div class="d-flex justify-end gap-2 align-items-center">
+                        <app-important></app-important>
+                        <label class="fs-5">التخصص المطلوب</label>
+                    </div>
+                    <select required ngModel name="Takhsos" id="input_5_130" class="text-end inputlook form-select" aria-required="true" aria-invalid="false">
+                        <option *ngFor="let takhsositem of TakhsosListOf" [value]="takhsositem.name">
+                            {{takhsositem.name}}
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div>
+                <p class="text-[30px]">:البيانات الشخصية</p>
+            </div>
+            <hr/>
+
+            <!-- <div class="d-flex flex-col align-items-end gap-2">
+                <div class="d-flex justify-end gap-2 align-items-center">
+                    <app-important></app-important>
+                    <label class="fw-bolder fs-5">رقم الهوية</label>
+                </div>
+                <input ngModel required class="text-end inputlook" type="text" name="Identity">
+            </div> -->
+    
+            <section class="d-flex flex-col gap-3">
+                <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <label class="fs-5">دخل الاسرة بالشيكل</label>
+                        </div>
+                        <select required ngModel class="text-end inputlook w-100" name="earned">
+                            <option *ngFor="let dakhl of FamilyEarnsListOf" [value]="dakhl.name">
+                                {{dakhl.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <label class="fs-5">اعاقة افراد الاسرة</label>
+                        </div>
+                        <select required ngModel class="text-end inputlook w-100" name="disability">
+                            <option value="الاب">الاب</option>
+                            <option value="الام">الام</option>
+                            <option value="الاخ">الاخ</option>
+                            <option value="الاخت">الاخت</option>
+                            <option value="اكثر من ذلك">اكثر من واحد</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <label class="fs-5">وفاة ولي الامر</label>
+                        </div>
+                        <select required ngModel class="text-end inputlook w-100" name="daddeath">
+                            <option value="الاب">الاب</option>
+                            <option value="الام">الام</option>
+                            <option value="كلاهما">كلاهما</option>
+                            <option value="غير ذلك">غير ذلك</option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <label class="fs-5">رقم الحالة</label>
+                        <input minlength="3" required ngModel class="text-end inputlook w-100" type="number" name="StateNumber">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-end gap-2 align-items-center">
+                    <app-important></app-important>
+                    <label class="fw-bolder fs-5">الاسم رباعي</label>
+                </div>
+
+                <section class="d-flex flex-col gap-3">
+                    <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">العائلة</label>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="text" name="FamilyName">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">اسم الجد</label>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="text" name="GrandName">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">اسم الاب</label>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="text" name="DadName">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">الاسم الاول</label>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="text" name="FirstName">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-end gap-2 align-items-center">
+                        <app-important></app-important>
+                        <label class="fw-bolder fs-5">الاسم رباعي (بالانجليزية)</label>
+                    </div>    
+
+                    <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">العائلة (بالانجليزية)</label>
+                            <input #familyenglish (change)="checkForArabic(familyenglish.value)" minlength="3" required ngModel [class]="'text-end inputlook w-100 ' + (ContainsArabic ? 'invalidfield' : '')" type="text" name="FamilyNameEnglish">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">اسم الجد (بالانجليزية)</label>
+                            <input #grandenglish (change)="checkForArabic(grandenglish.value)" minlength="3" required ngModel [class]="'text-end inputlook w-100' + (ContainsArabic ? 'invalidfield' : '')" type="text" name="GrandNameEnglish">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">اسم الاب (بالانجليزية)</label>
+                            <input #dadenglish (change)="checkForArabic(dadenglish.value)" minlength="3" required ngModel [class]="'text-end inputlook w-100' + (ContainsArabic ? 'invalidfield' : '')" type="text" name="DadNameEnglish">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">الاسم الاول (بالانجليزية)</label>
+                            <input #firstnameenglish (change)="checkForArabic(firstnameenglish.value)" minlength="3" required ngModel [class]="'text-end inputlook w-100' + (ContainsArabic ? 'invalidfield' : '')" type="text" name="FirstNameEnglish">
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">الحالة الاجتماعية</label>
+                            </div>
+                            <select required ngModel class="text-end inputlook w-100" name="Merry">
+                                <option value="اعزب">اعزب</option>
+                                <option value="متزوج">متزوج</option>
+                                <option value="ارمل">ارمل</option>
+                                <option value="مطلق">مطلق</option>
+                                <option value="حالة اخري">اخري</option>
+                            </select>
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">مكان الميلاد</label>
+                            </div>
+                            <input required ngModel class="text-end inputlook w-100" type="text" name="BirthPlace">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">تاريخ الميلاد</label>
+                            </div>
+                            <input required ngModel class="text-end inputlook w-100" type="date" name="BirthDate">
+                        </div>
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">الجنس</label>
+                            <select ngModel class="text-end inputlook w-100" name="Sex">
+                                <option value="ذكر">ذكر</option>
+                                <option value="انثي">انثي</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">الاعاقة</label>
+                            <select ngModel class="text-end inputlook w-100" name="DisabilityType">
+                                <option value="سمعية">سمعية</option>
+                                <option value="بصرية">بصرية</option>
+                                <option value="حركية">حركية</option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">الديانة</label>
+                            <select ngModel class="text-end inputlook w-100" name="Religion">
+                                <option value="مسلم">مسلم</option>
+                                <option value="مسيحي">مسيحي</option>
+                                <option value="بدون دين">بدون</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">رقم الواتس</label>
+                            </div>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="tel" name="WhatsNumber">
+                        </div>
+
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">الهاتف المحمول</label>
+                            </div>
+                            <input minlength="3" required ngModel class="text-end inputlook w-100" type="tel" name="PhoneNumber">
+                        </div>
+                        
+                    </div>
+
+                    <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">مكان النزوح</label>
+                            </div>
+                            <input required ngModel class="text-end inputlook w-100" type="text" name="nzohplace">
+                        </div>
+
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <label class="fs-5">العنوان</label>
+                            <select ngModel class="text-end inputlook w-100" name="Address">
+                                <option *ngFor="let add of AddressListOf" [value]="add.name">
+                                    {{add.name}}
+                                </option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                            <div class="d-flex justify-end gap-2 align-items-center">
+                                <app-important></app-important>
+                                <label class="fs-5">المحافظة</label>
+                            </div>
+                            <input required ngModel class="text-end inputlook w-100" type="text" name="State">
+                        </div>
+                        
+                    </div> 
+
+                </section>
+
+
+            </section>
+
+            <div class="mt-5">
+                <p class="text-[30px]">:بيانات شهادة الثانوية</p>
+                <hr/>
+
+                <div class="d-flex justify-end gap-2 flex-col md:flex-row">
+
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <app-important></app-important>
+                            <label class="fs-5">سنة الحصول</label>
+                        </div>
+                        <input minlength="1" required ngModel class="text-end inputlook w-100" type="text" name="YearTaken">
+                    </div>
+                    
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <app-important></app-important>
+                            <label class="fs-5">معدل الثانوية</label>
+                        </div>
+                        <input minlength="1" required ngModel class="text-end inputlook w-100" type="text" name="SecondaryMark">
+                    </div>
+
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <app-important></app-important>
+                            <label class="fs-5">فرع الثانوية</label>
+                        </div>
+                        <select ngModel class="text-end inputlook w-100" name="TypeofSecondary">
+                            <option *ngFor="let far3ofsecondary of SecondaryTypeListOf" [value]="far3ofsecondary.name">
+                                {{far3ofsecondary.name}}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- <div class="d-flex justify-end gap-2 align-items-end flex-col w-[200px] ms-auto mt-5">
+                    <div class="d-flex justify-end gap-2 align-items-center">
+                        <app-important></app-important>
+                        <label class="fs-5">كود الطالب</label>
+                    </div>
+                    <input readonly [(ngModel)]="CodeOfStudent" minlength="1" required ngModel class="text-center p-2 w-100 rounded-full bg-gray-600 text-light" type="text" name="StudentCode">
+                </div> -->
+
+            </div>
+
+            <div class="mt-5">
+                <p class="text-[30px]">:صور الملحقات</p>
+                <hr/>
+
+                <div class="d-flex align-items-end gap-2 flex-col">
+                    <label class="fw-bolder">صورة الشهادة</label>
+                    <button type="button" (click)="uploadcertifi.click()" class="btn btn-danger">تحميل صورة</button>
+                    <label>الحد الأقصى لحجم الملف اربعة ميجا بايت</label>
+
+                    <img #imgfile2 width="200" height="200" class="border border-gray-400 constantimage simg" src="emptycertificate.webp" alt="">
+
+                    <input ngModel (change)="ChangePicture(uploadcertifi, imgfile2)" #uploadcertifi hidden type="file" name="">
+                </div>
+            </div>
+
+            <div class="d-flex align-items-end gap-2 flex-col">
+                <label class="fw-bolder">صورة شخصية للطالب</label>
+                <button type="button" (click)="uploadself.click()" class="btn btn-danger">تحميل صورة</button>
+                <label>الحد الأقصى لحجم الملف اربعة ميجا بايت</label>
+
+                <img #selffile width="200" height="200" class="border border-gray-400 constantimage simg" src="profile.webp" alt="">
+
+                <input ngModel (change)="ChangePicture(uploadself, selffile)" #uploadself hidden type="file" name="">
+            </div>
+
+            <div class="d-flex align-items-end gap-2 flex-col">
+                <label class="fw-bolder">صورة شهادة الميلاد</label>
+                <button type="button" (click)="uploadborn.click()" class="btn btn-danger">تحميل صورة</button>
+                <label>الحد الأقصى لحجم الملف اربعة ميجا بايت</label>
+
+                <img #bornfile width="200" height="200" class="border border-gray-400 constantimage simg" src="borncert.png" alt="">
+
+                <input ngModel (change)="ChangePicture(uploadborn, bornfile)" #uploadborn hidden type="file" name="">
+            </div>
+
+            <div class="d-flex align-items-end gap-2 flex-col">
+                <label class="fw-bolder">صورة الهوية (البطاقة)</label>
+                <button type="button" (click)="upload.click()" class="btn btn-danger">تحميل صورة</button>
+                <label>الحد الأقصى لحجم الملف اربعة ميجا بايت</label>
+
+                <img #imgfile width="200" height="200" class="border border-gray-400 constantimage simg" src="id.png" alt="">
+
+                <input ngModel (change)="ChangePicture(upload, imgfile)" #upload hidden type="file" name="">
+                
+                <button type="submit" class="btn btn-primary mt-3 w-[200px]">ارسل الطلب</button>
+            </div>
+
+            
+        </section>
+    </form>
+</article>
+
+<button #dadinfofill hidden data-bs-toggle="modal" data-bs-target="#DadInformation"></button>
+
+<div class="modal fade" id="DadInformation" tabindex="-1" aria-labelledby="DadInformationLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form #dadf="ngForm" ngNativeValidate (ngSubmit)="SubmitDadFields(dadf)" class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 ms-auto" id="DadInformationLabel">بيانات ولي امر الطالب</h1>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex flex-col justify-end gap-2">
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <label class="fs-5">الاسم</label>
+                        <input minlength="3" required ngModel class="text-end inputlook w-100" type="text" name="DadName">
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <label class="fs-5">الهاتف المحمول</label>
+                        <input minlength="5" required ngModel class="text-end inputlook w-100" type="tel" name="DadPhone">
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <label class="fs-5">المهنة</label>
+                        <input minlength="2" required ngModel class="text-end inputlook w-100" type="text" name="DadJob">
+                    </div>
+                    <div class="d-flex justify-end gap-2 align-items-end flex-col">
+                        <div class="d-flex justify-end gap-2 align-items-center">
+                            <label class="fs-5">الحالة الاجتماعية</label>
+                        </div>
+                        <select required ngModel class="text-end inputlook w-100" name="DadSocialState">
+                            <option value="وكالة">وكالة</option>
+                            <option value="حكومة">حكومة</option>
+                            <option value="اخري">اخري</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">اغلاق</button>
+                <button type="submit" class="btn btn-primary">حفظ</button>
+            </div>
+        </form>
+    </div>
+</div>

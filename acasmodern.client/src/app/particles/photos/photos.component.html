@@ -1,0 +1,39 @@
+<!-- النافذة المنبثقة (Modal) -->
+  <div
+    *ngIf="isViewerOpen"
+    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50"
+  >
+    <div class="relative w-full max-w-4xl mx-auto bg-white rounded-lg shadow-lg p-4">
+      <!-- زر الإغلاق -->
+      <button
+      style="z-index: 1;"
+      class="absolute top-2 right-2 bg-red-500 text-white p-2 rounded-full"
+      (click)="closeViewer()"
+      >
+        ✖
+      </button>
+  
+      <!-- الصورة النشطة -->
+      <div class="relative">
+        <img
+          [src]="CurrentImages[currentIndex].src"
+          alt="Image Viewer"
+          class="w-full h-[90vh] rounded-lg shadow-lg"
+        />
+        <!-- أزرار التنقل -->
+        <button
+          class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+          (click)="prevImage()"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button
+          class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-2 rounded-full"
+          (click)="nextImage()"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  

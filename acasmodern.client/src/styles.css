@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.activelink
+{
+    @apply text-red-600 p-2;
+}
+
+.socialicon
+{
+    @apply bg-red-600 p-2 border-2 rounded-full w-[40px] h-[40px] flex justify-center text-center text-[20px]
+}
+
+.navbar-item:hover
+{
+    @apply bg-red-600 p-2;
+}
+
+.navbar-item
+{
+    @apply text-white;
+}
+
+.inputlook
+{
+    @apply border border-gray-400 rounded-lg text-end w-[200px] px-2 py-1 bg-gray-200;
+}

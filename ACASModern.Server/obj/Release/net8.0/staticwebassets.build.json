@@ -1,0 +1,23 @@
+{
+  "Version": 1,
+  "Hash": "NaTg1+ZPV9R6Xz5AVvbOxUZXzl5HGCPhgLUvAXB02c0=",
+  "Source": "ACASModern.Server",
+  "BasePath": "_content/ACASModern.Server",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [
+    {
+      "Identity": "C:\\Users\\Abdullah Elrouby\\Desktop\\ACAS Project\\ACASModern\\acasmodern.client\\acasmodern.client.esproj",
+      "Version": 2,
+      "Source": "acasmodern.client",
+      "GetPublishAssetsTargets": "GetCurrentProjectPublishStaticWebAssetItems",
+      "AdditionalPublishProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",
+      "GetBuildAssetsTargets": "GetCurrentProjectBuildStaticWebAssetItems",
+      "AdditionalBuildProperties": "Configuration=Release;Platform=AnyCPU",
+      "AdditionalBuildPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained"
+    }
+  ],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

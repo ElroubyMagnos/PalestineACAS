@@ -1,0 +1,280 @@
+<div class="bg-white rounded-lg shadow-md p-4">
+    <div class="overflow-x-auto"></div>
+    <table class="table-auto w-full border-collapse border border-gray-200">
+      <thead class="bg-gray-100">
+        <tr>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">الإجراءات</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">رقم الهاتف</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">اسم الجد</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">اسم الاب</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">الاسم</th>
+            <th class="border border-gray-200 px-4 py-2 text-left font-medium text-gray-600">#</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let studentreq of AllStudentsRequests; let i = index" (click)="SelectedStudent = studentreq" [class]="'hoverbg-gray-200 cursor-pointer hover:bg-gray-300 ' + (studentreq == SelectedStudent ? 'bg-gray-300' : '')">
+            <td class="border border-gray-200 px-4 py-2 d-flex gap-1">
+              <button (click)="Delete(studentreq)" class="bg-red-500 text-white px-3 py-1 rounded-md hoverbg-red-600">
+                حذف
+              </button>
+              <button (click)="ShowDad(studentreq)" class="bg-blue-500 text-white px-3 py-1 rounded-md hoverbg-blue-600">
+                ولي الامر
+              </button>
+              <button class="bg-blue-500 text-white px-3 py-1 rounded-md hoverbg-blue-600">
+                نقل
+              </button>
+            </td>
+            <td class="border border-gray-200 px-4 py-2">{{ studentreq.phoneNumber }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ studentreq.grandName }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ studentreq.dadName }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ studentreq.firstName }}</td>
+            <td class="border border-gray-200 px-4 py-2">{{ i + 1 }}</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button *ngIf="SelectedStudent != null" (click)="SelectedStudent = null" class="btn btn-danger form-control mt-1">تجاهل</button>
+
+    <form #f="ngForm" (ngSubmit)="UpdateSelected(f);" ngNativeValidate class="py-4 text-end d-flex flex-col gap-2">
+        @if (SelectedStudent) 
+        {
+            <div class="d-flex flex-col">
+                <label for="takhsos">التخصص</label>
+                <input [value]="SelectedStudent.takhsos" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="takhsos" name="takhsos">
+            </div>
+            
+            <div class="d-flex flex-col">
+                <label for="earned">الدخل الاسري</label>
+                <input [value]="SelectedStudent.earned" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="earned" name="earned">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="disability">الإعاقة</label>
+                <input [value]="SelectedStudent.disability" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="disability" name="disability">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="dadDeath">وفاة الأب</label>
+                <input [value]="SelectedStudent.dadDeath" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="dadDeath" name="dadDeath">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="stateNumber">رقم الولاية</label>
+                <input [value]="SelectedStudent.stateNumber" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="number" id="stateNumber" name="stateNumber">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="familyName">اسم العائلة</label>
+                <input [value]="SelectedStudent.familyName" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="familyName" name="familyName">
+            </div>
+            
+            <div class="d-flex flex-col">
+                <label for="grandName">اسم الجد</label>
+                <input [value]="SelectedStudent.grandName" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="grandName" name="grandName">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="dadName">اسم الأب</label>
+                <input [value]="SelectedStudent.dadName" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="dadName" name="dadName">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="firstName">الاسم الأول</label>
+                <input [value]="SelectedStudent.firstName" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="firstName" name="firstName">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="familyNameEnglish">اسم العائلة (بالإنجليزية)</label>
+                <input [value]="SelectedStudent.familyNameEnglish" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="familyNameEnglish" name="familyNameEnglish">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="grandNameEnglish">اسم الجد (بالإنجليزية)</label>
+                <input [value]="SelectedStudent.grandNameEnglish" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="grandNameEnglish" name="grandNameEnglish">
+            </div>
+            
+            <div class="d-flex flex-col">
+                <label for="dadNameEnglish">اسم الأب (بالإنجليزية)</label>
+                <input [value]="SelectedStudent.dadNameEnglish" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="dadNameEnglish" name="dadNameEnglish">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="firstNameEnglish">الاسم الأول (بالإنجليزية)</label>
+                <input [value]="SelectedStudent.firstNameEnglish" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="firstNameEnglish" name="firstNameEnglish">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="merry">الحالة الاجتماعية</label>
+                <input [value]="SelectedStudent.merry" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="merry" name="merry">
+            </div>
+            
+            <div class="d-flex flex-col">
+                <label for="birthPlace">مكان الميلاد</label>
+                <input [value]="SelectedStudent.birthPlace" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="birthPlace" name="birthPlace">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="birthDate">تاريخ الميلاد</label>
+                <input [value]="SelectedStudent.birthDate | dateFormat" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="date" id="birthDate" name="birthDate">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="boy">الجنس</label>
+                <select name="boy" id="boy" class="p-2 rounded-lg bg-gray-300 outline-none border-black m-1 text-end">
+                    <option [selected]="SelectedStudent.boy" value="boy">ذكر</option>
+                    <option [selected]="!SelectedStudent.boy" value="boy">انثي</option>
+                </select>
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="disabilityType">نوع الإعاقة</label>
+                <input [value]="SelectedStudent.disabilityType" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="disabilityType" name="disabilityType">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="religion">الديانة</label>
+                <input [value]="SelectedStudent.religion" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="religion" name="religion">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="whatsNumber">رقم الواتساب</label>
+                <input [value]="SelectedStudent.whatsNumber" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="whatsNumber" name="whatsNumber">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="phoneNumber">رقم الهاتف</label>
+                <input [value]="SelectedStudent.phoneNumber" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="phoneNumber" name="phoneNumber">
+            </div>
+            
+            <div class="d-flex flex-col">
+                <label for="nzohPlace">مكان النزهة</label>
+                <input [value]="SelectedStudent.nzohPlace" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="nzohPlace" name="nzohPlace">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="address">العنوان</label>
+                <input [value]="SelectedStudent.address" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="address" name="address">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="state">الولاية</label>
+                <input [value]="SelectedStudent.state" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="state" name="state">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="yearTaken">سنة الحصول</label>
+                <input [value]="SelectedStudent.yearTaken" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="number" id="yearTaken" name="yearTaken">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="secondaryMark">علامة الثانوية</label>
+                <input [value]="SelectedStudent.secondaryMark" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="secondaryMark" name="secondaryMark">
+            </div>
+        
+            <div class="d-flex flex-col">
+                <label for="typeOfSecondary">نوع الثانوية</label>
+                <input [value]="SelectedStudent.typeOfSecondary" class="p-2 rounded-lg bg-gray-300 outline-none border-black text-end m-1" type="text" id="typeOfSecondary" name="typeOfSecondary">
+            </div>
+            
+            <div class="d-flex flex-col  align-items-end">
+              <label for="certificate">الشهادة</label>
+              <img #imgofcertificate (click)="certificatepic.click()" width="200" height="200" [src]="'data:image/png;base64,' + SelectedStudent.certificate" alt="">
+              <input (change)="PictureChanged(certificatepic, imgofcertificate)" #certificatepic type="file" hidden name="" id="">
+            </div>
+        
+            <div class="d-flex flex-col  align-items-end">
+                <label for="identityPicture">صورة الهوية</label>
+                <img #imgofidentity (click)="identitypic.click()" width="200" height="200" [src]="'data:image/png;base64,' + SelectedStudent.identityPicture" alt="">
+                <input (change)="PictureChanged(identitypic, imgofidentity)" #identitypic type="file" hidden name="" id="">
+            </div>
+        
+            <div class="d-flex flex-col align-items-end">
+                <label for="bornPicture">صورة شهادة الميلاد</label>
+                <img #imgofborn (click)="bornpic.click()" width="200" height="200" [src]="'data:image/png;base64,' + SelectedStudent.bornPicture" alt="">
+                <input (change)="PictureChanged(bornpic, imgofborn)" #bornpic type="file" hidden name="" id="">
+            </div>
+        
+            <div class="d-flex flex-col align-items-end">
+                <label for="selfPicture">الصورة الشخصية</label>
+                <img #imgofself (click)="selfpic.click()" width="200" height="200" [src]="'data:image/png;base64,' + SelectedStudent.selfPicture" alt="">
+                <input (change)="PictureChanged(selfpic, imgofself)" #selfpic type="file" hidden name="" id="">
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-primary m-1">حفظ</button>
+            </div>
+        }
+    </form>
+</div>
+
+<div *ngIf="isModalOpen" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+    <div class="relative bg-white rounded-lg shadow-lg w-full max-w-md p-6 sm:p-8">
+      <!-- Header -->
+      <div class="flex items-center justify-between border-b pb-4">
+        <h2 class="text-xl font-semibold text-gray-800">بيانات ولي الأمر</h2>
+        <button (click)="closeModal()" class="text-gray-400 hover:text-red-500 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+  
+      <!-- Content -->
+      <div class="mt-4 space-y-4">
+        <!-- الاسم -->
+        <div class="flex items-center space-x-3 justify-between">
+          <div class="p-2 bg-blue-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11c0-1.105.895-2 2-2s2 .895 2 2-.895 2-2 2-2-.895-2-2zm-5 8c0 1.105 3-3.5 5-3.5s5 4.605 5 3.5-2.105 3.5-5 3.5-5-.395-5-3.5z" />
+            </svg>
+          </div>
+          <input [(ngModel)]="CurrentDad.dadName" type="text" class="text-gray-600 text-sm text-center">
+          <p>اسم الاب</p>
+        </div>
+  
+        <!-- رقم الهاتف -->
+        <div class="flex items-center space-x-3 justify-between">
+          <div class="p-2 bg-green-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M4 17h16" />
+            </svg>
+          </div>
+          <input [(ngModel)]="CurrentDad.dadPhone" class="text-gray-600 text-sm text-center"/>
+          <p>رقم الهاتف</p>
+        </div>
+  
+        <!-- الحالة الاجتماعية -->
+        <div class="flex items-center space-x-3 justify-between">
+          <div class="p-2 bg-yellow-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-yellow-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 7l6 6-6 6M9 3l6 6-6 6m6-6h6" />
+            </svg>
+          </div>
+          <input [(ngModel)]="CurrentDad.dadSocialState" class="text-gray-600 text-sm text-center"/>
+          <p>الحالة الاجتماعية</p>
+        </div>
+  
+        <!-- العمل -->
+        <div class="flex items-center space-x-3 justify-between">
+          <div class="p-2 bg-purple-100 rounded-full">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <input [(ngModel)]="CurrentDad.dadJob" class="text-gray-600 text-sm text-center"/>
+          <p>عمل الوالد</p>
+        </div>
+      </div>
+  
+      <!-- Footer -->
+      <div class="mt-6 flex justify-end space-x-4">
+        <button (click)="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-300">
+          إغلاق
+        </button>
+        <button (click)="SaveDad()" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+          حفظ
+        </button>
+      </div>
+    </div>
+  </div>
+  

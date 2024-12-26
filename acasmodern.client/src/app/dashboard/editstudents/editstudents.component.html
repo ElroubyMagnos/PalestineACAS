@@ -1,0 +1,18 @@
+<article class="m-5">
+
+    <nav class="bg-blue-600 text-white px-4 py-2 flex items-center justify-between">
+        <!-- شعار -->
+        <div class="text-lg font-bold">
+          <a href="/" class="hover:text-red-500 fw-bolder"><img width="50" height="50" src="id.png" alt=""></a>
+        </div>
+      
+        <!-- روابط -->
+        <div class="space-x-3 d-flex">
+            <a routerLinkActive="bg-red-500" [routerLink]="['/db/Dads']" class="p-2 rounded-lg hover:bg-red-500 fw-bolder text-light no-underline">بيانات اولياء الامور</a>
+            <a routerLinkActive="bg-red-500" [routerLink]="['/db/Now']" class="p-2 rounded-lg hover:bg-red-500 fw-bolder text-light no-underline">الطلاب الحاليين</a>
+            <a routerLinkActive="bg-red-500" [routerLink]="['/db/New']" class="p-2 rounded-lg hover:bg-red-500 fw-bolder text-light no-underline">الطلاب الجدد</a>
+        </div>
+    </nav>
+    
+    <router-outlet></router-outlet>
+</article>

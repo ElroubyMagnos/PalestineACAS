@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35327.3
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ACASModern.Server", "ACASModern.Server\ACASModern.Server.csproj", "{48316FA3-BAE5-4DEF-A186-FF5F054D5AB8}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "acasmodern.client", "acasmodern.client\acasmodern.client.esproj", "{7C829917-BC74-4AE6-A519-E415F528587E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{48316FA3-BAE5-4DEF-A186-FF5F054D5AB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48316FA3-BAE5-4DEF-A186-FF5F054D5AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48316FA3-BAE5-4DEF-A186-FF5F054D5AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48316FA3-BAE5-4DEF-A186-FF5F054D5AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C829917-BC74-4AE6-A519-E415F528587E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {873B2BF2-4C1A-4B72-A8B4-AD063F6C8BAF}
+	EndGlobalSection
+EndGlobal
